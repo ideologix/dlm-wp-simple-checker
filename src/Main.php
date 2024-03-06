@@ -36,7 +36,7 @@ class Main {
 	public $configuration;
 	public $activator;
 	public $checker;
-	public $licenses;
+	public $license;
 
 	/**
 	 * Constructor
@@ -57,7 +57,7 @@ class Main {
 		} else {
 			$this->checker = new Checker( $this->configuration );
 		}
-		$this->licenses = new License($this->configuration);
+		$this->license = new License($this->configuration);
 	}
 
 	/**
@@ -65,15 +65,15 @@ class Main {
 	 * @return License
 	 * @throws \Exception
 	 */
-	public function getLicenses() {
-		return $this->licenses;
+	public function license() {
+		return $this->license;
 	}
 
 	/**
 	 * Returns the license checker data
 	 * @return AbstractChecker|Checker
 	 */
-	public function getChecker() {
+	public function checker() {
 		return $this->checker;
 	}
 }

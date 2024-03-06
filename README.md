@@ -86,13 +86,13 @@ yourprefix_license_checker();
  * --- ADVANCED USAGE ---
  * 
  *  1. To check if license is active
- *     if(yourprefix_license_checker()->core->is_active())...
- *  2. To disable the license activation
- *     yourprefix_license_checker()->core->disable()
- *  3. To enable the license activation
- *     yourprefix_license_checker()->core->enable()
+ *     if(yourprefix_license_checker()->license()->isLicenseValid())...
+ *  2. To activate the current license
+ *     yourprefix_license_checker()->license()->activate('License-key-goes-here')
+ *  3. To deactivate the current license
+ *     yourprefix_license_checker()->license()->deactivate()
  *  4. To remove the license completely (disables if not disabled)
- *     yourprefix_license_checker()->core->remove()
+ *     yourprefix_license_checker()->license()->deleteData()
  */
 
 ```

@@ -197,16 +197,6 @@ class License {
 	}
 
 	/**
-	 * Queries the API to enable the activation token
-	 * @return void
-	 */
-	public function queryEnableActivationToken() {
-		$result = $this->client->licenses()->deactivate( $this->getActivationToken() );
-		return $this->response($result);
-
-	}
-
-	/**
 	 * Queries the API to disable the activation token
 	 * @return void
 	 */
