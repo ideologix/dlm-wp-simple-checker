@@ -26,6 +26,7 @@
 
 namespace IdeoLogix\DigitalLicenseManagerSimpleChecker;
 
+use DateTime;
 use IdeoLogix\DigitalLicenseManagerClient\Http\Responses\Base;
 use IdeoLogix\DigitalLicenseManagerClient\Http\Responses\Error;
 use IdeoLogix\DigitalLicenseManagerClient\Service;
@@ -132,6 +133,32 @@ class License {
 	 */
 	public function isLicenseKeySet() {
 		return !empty($this->getLicenseKey());
+	}
+
+	/**
+	 * Is license valid?
+	 * @return mixed|string
+	 */
+	public function isLicenseValid() {
+
+		$expiresAt = $this->getExpiresAt();
+
+		if ( is_null( $expiresAt ) ) {
+			$validity = 1; // Permanent activation
+		} elseif ( $expiresAt === '' ) {
+			$validity = 0; // Not set? Deactivated.
+		} else {
+			// Timestamp, check.
+			$now     = new DateTime();
+			$expires = DateTime::createFromFormat( 'Y-m-d H:i:s', $expiresAt );
+			if ( $now > $expires ) {
+				$validity = 0; // Expired.
+			} else {
+				$validity = 1; // Valid.
+			}
+		}
+
+		return $expiresAt;
 	}
 
 	/**
