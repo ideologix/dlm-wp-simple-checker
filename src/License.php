@@ -158,7 +158,7 @@ class License {
 			}
 		}
 
-		return $expiresAt;
+		return $validity;
 	}
 
 	/**
