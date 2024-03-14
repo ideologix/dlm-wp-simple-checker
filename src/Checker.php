@@ -57,8 +57,6 @@ class Checker extends AbstractChecker {
 		$licenseAPI = new License( $this->configuration );
 
 		if ( ! $licenseAPI->isLicenseKeySet() ) {
-			error_log( '%s - Cron Checker: %s', $this->configuration->name, __( 'License key not found.' ) );
-
 			return;
 		}
 
