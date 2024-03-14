@@ -62,7 +62,7 @@ class Checker extends AbstractChecker {
 
 		$licenseObj = $licenseAPI->queryValidateLicenseExpiration();
 		if ( is_wp_error( $licenseObj ) ) {
-			error_log( '%s - Cron Checker: %s (%s)', $this->configuration->name, $licenseObj->get_error_message(), $licenseObj->get_error_code() );
+			error_log( sprintf( '%s - Cron Checker: %s (%s)', $this->configuration->name, $licenseObj->get_error_message(), $licenseObj->get_error_code() ) );
 
 			return;
 		} else {
@@ -76,14 +76,14 @@ class Checker extends AbstractChecker {
 		}
 
 		if ( ! $licenseAPI->isActivationTokenSet() ) {
-			error_log( '%s - Cron Checker: %s', $this->configuration->name, __( 'Activation token not found.' ) );
+			error_log( sprintf( '%s - Cron Checker: %s', $this->configuration->name, __( 'Activation token not found.' ) ) );
 
 			return;
 		}
 
 		$tokenObj = $licenseAPI->queryValidateActivationToken();
 		if ( is_wp_error( $tokenObj ) ) {
-			error_log( '%s - Cron Checker: %s (%s)', $this->configuration->name, $tokenObj->get_error_message(), $tokenObj->get_error_code() );
+			error_log( sprintf( '%s - Cron Checker: %s (%s)', $this->configuration->name, $tokenObj->get_error_message(), $tokenObj->get_error_code() ) );
 
 			return;
 		} else {
